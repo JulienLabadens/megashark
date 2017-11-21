@@ -35,10 +35,7 @@ class CreateMovies extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
-        $table->addColumn('out_date', 'datetime', [
-            'default' => null,
-            'null' => false,
-        ]);
+     
         $table->create();
     }
 }
