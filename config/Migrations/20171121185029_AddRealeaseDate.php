@@ -1,3 +1,4 @@
+exit
 <?php
 use Migrations\AbstractMigration;
 
@@ -12,10 +13,11 @@ class AddRealeaseDate extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('Movies');
-           $table->addColumn('releaseddate', 'datetime', [
+        $table = $this->table('movies');
+           $table->addColumn('release_date', 'datetime', [
             'default' => null,
             'null' => false,
         ]);
+        $table->update();
     }
 }
