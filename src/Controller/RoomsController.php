@@ -38,8 +38,11 @@ class RoomsController extends AppController
         $room = $this->Rooms->get($id, [
             'contain' => ['Showtimes']
         ]);
-
-        $this->set('room', $room);
+        /*
+        $showtim=$query=$this->Rooms->Showtimes->find('all')
+            ->where(['Articles.created >' => new DateTime('-10 days')]);
+        */
+        $this->set('room', $showtim);
         $this->set('_serialize', ['room']);
     }
 
