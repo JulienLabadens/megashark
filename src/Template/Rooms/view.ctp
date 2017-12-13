@@ -41,7 +41,7 @@
     </table>
     <div class="related">
         <h4><?= __('Related Showtimes') ?></h4>
-        <?php if (!empty($room->showtimes)): ?>
+        <?php if (!empty($room->showtimes)): ?>  //colonnes
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
@@ -53,7 +53,7 @@
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($room->showtimes as $showtimes): ?>
+            <?php foreach ($room->showtimes as $showtimes): ?>  //affichage
             <tr>
                 <td><?= h($showtimes->id) ?></td>
                 <td><?= h($showtimes->movie_id) ?></td>
