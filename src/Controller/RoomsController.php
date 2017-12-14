@@ -40,12 +40,48 @@ class RoomsController extends AppController
             'contain' => ['Showtimes']
         ]);
         
-        $today = strtotime('today');
+        $tmonday = strtotime('today');
+        $nmonday= strtotime('+7days Mondays this week');
+        $thisweekshow = TableRegistry::get('Showtimes')->find()
+                ->where(['start >=' => $tmonday])
+                ->where(['start <=' => $nmonday]);
         
-        $test = TableRegistry::get('Showtimes')->find()
-                ->where(['start >=' => $today]);
         
-        $this->set('test',$test);
+        foreach($thisweekshow as $shows){
+               switch ($shows->start->format('N')) {
+                case 1:
+                    $monday[]=$shows;
+                    break;
+                case 2:
+                    $tuesday[]=$shows;
+                    break;
+                case 3:
+                    $wednesday[]=$shows;
+                    break;
+                case 4:
+                    $thursday[]=$shows;
+                    break;
+                case 5:
+                    $friday[]=$shows;
+                    break;
+                case 6:
+                    $saturday[]=$shows;
+                    break;
+                case 7:
+                    $sunday[]=$shows;
+                    break;
+                    }
+        }
+        
+        
+        $this->set('monday',$monday);
+        $this->set('tuesday',$tuesday);
+        $this->set('wednesday',$wednesday);
+        $this->set('thursday',$thursday);
+        $this->set('friday',$friday);
+        $this->set('saturday',$saturday);
+        $this->set('sunday',$sunday);
+        $this->set('thisweekshow',$thisweekshow);
         $this->set('room', $room);
         $this->set('_serialize', ['room']);
            

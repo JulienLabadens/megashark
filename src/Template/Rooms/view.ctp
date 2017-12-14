@@ -41,24 +41,26 @@
     </table>
     <div class="related">
         <h4><?= __('Related Showtimes') ?></h4>
-        <?php if (!empty($room->showtimes)): ?>  //colonnes
+        <?php if (!empty($room->showtimes)): ?>  
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Movie Id') ?></th>
                 <th scope="col"><?= __('Room Id') ?></th>
                 <th scope="col"><?= __('Start') ?></th>
+                <th scope="col"><?= __('Day') ?></th>
                 <th scope="col"><?= __('End') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($room->showtimes as $showtimes): ?>  //affichage
+            <?php foreach ($room->showtimes as $showtimes): ?>  
             <tr>
                 <td><?= h($showtimes->id) ?></td>
                 <td><?= h($showtimes->movie_id) ?></td>
                 <td><?= h($showtimes->room_id) ?></td>
                 <td><?= h($showtimes->start) ?></td>
+                <td><?= h($showtimes->start->format('N')) ?></td>
                 <td><?= h($showtimes->end) ?></td>
                 <td><?= h($showtimes->created) ?></td>
                 <td><?= h($showtimes->modified) ?></td>
@@ -70,6 +72,59 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
+        <?php endif ?>
     </div>
+    
+    
+    <div class="related">
+        <h4><?= __('This week: ') ?></h4>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Monday') ?></th>
+                <th scope="col"><?= __('Tuesday') ?></th>
+                <th scope="col"><?= __('Wednesday') ?></th>
+                <th scope="col"><?= __('Thursday') ?></th>
+                <th scope="col"><?= __('Friday') ?></th>
+                <th scope="col"><?= __('Saturday') ?></th>
+                <th scope="col"><?= __('Sunday') ?></th>
+            </tr>
+            <tr>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($monday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($tuesday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($wednesday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($thursday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($friday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($saturday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+                <?php foreach ($sunday as $showtimes): ?>  
+                    <td><?= h($showtimes->movie_id) ?></td>
+                <?php endforeach; ?>
+            </table>
+            </tr>
+        </table>
+    
 </div>
